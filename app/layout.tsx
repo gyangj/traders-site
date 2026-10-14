@@ -1,6 +1,8 @@
+import "./globals.css";
+
 export const metadata = {
-  title: 'TRADERS | BRIGHTEX',
-  description: 'Market analysis dashboard for traders.'
+  title: "TRADERS | BRIGHTEX",
+  description: "Premium trading dashboard for market analysis.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

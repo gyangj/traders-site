@@ -1,843 +1,200 @@
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background: #05080d;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Inter, "Segoe UI", sans-serif;
-  background: #f2f4f7;
-  color: #0f172a;
-}
-
-button {
-  font: inherit;
-}
-
-.page-shell {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background: #0d0f14;
-  padding: 32px 16px 48px;
-  gap: 36px;
-}
-
-.phone-frame {
-  width: 100%;
-  max-width: 420px;
-  background: #edeef2;
-  border-radius: 18px;
-  padding: 0 0 14px;
-  box-shadow: 0 24px 40px rgba(2, 6, 23, 0.24);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-}
-
-.window-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(180deg, #f6f7fa, #e6e7eb);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 18px 18px 0 0;
-  height: 48px;
-  padding: 0 16px;
-  position: relative;
-}
-
-.window-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.dot {
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #c2c7d2;
-}
-
-.dot--left { background: #d0d5dd; }
-.dot--middle { background: #afbacb; }
-
-.window-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 38%;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(127, 138, 166, 0.22);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.title-pill {
-  display: block;
-  width: 64%;
-  height: 56%;
-  border-radius: 999px;
-  background: rgba(102, 112, 149, 0.5);
-}
-
-.window-close {
-  font-size: 24px;
-  line-height: 1;
-  color: #687386;
-  transform: translateY(-2px);
-}
-
-.app-topbar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 12px 12px 0;
-  background: linear-gradient(90deg, #5b5fd7 0%, #4c59cb 100%);
-  border-radius: 18px;
-  padding: 10px 14px;
-  color: #fff;
-}
-
-.brand-inline {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  min-width: 0;
-}
-
-.home-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  background: rgba(255, 255, 255, 0.15);
-  font-size: 16px;
-}
-
-.site-badge {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 12px;
-  opacity: 0.9;
-}
-
-.plus-icon,
-.notif-box,
-.ellipsis {
-  flex-shrink: 0;
-}
-
-.plus-icon {
-  font-size: 28px;
-  line-height: 1;
-  opacity: 0.9;
-}
-
-.notif-box {
-  width: 24px;
-  height: 24px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  font-weight: 700;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.ellipsis {
-  font-size: 20px;
-  line-height: 1;
-}
-
-.device-ui {
-  padding: 18px 18px 0;
-}
-
-.title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-.title-row h1 {
-  margin: 0;
-  font-size: clamp(2.2rem, 5vw, 3.1rem);
-  line-height: 1;
-  letter-spacing: -0.06em;
-  font-weight: 800;
-  color: #111827;
-}
-
-.menu-button {
-  width: 42px;
-  height: 42px;
-  border: 0;
-  background: rgba(148, 163, 184, 0.2);
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  gap: 4px;
-  cursor: pointer;
-  padding: 0;
-}
-
-.menu-button span {
-  width: 20px;
-  height: 3px;
-  background: #0f172a;
-  border-radius: 99px;
-  display: block;
-}
-
-.stack-block {
-  margin-bottom: 18px;
-}
-
-.field-label {
-  display: block;
-  font-size: 0.76rem;
-  font-weight: 800;
-  color: #475569;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin: 0 0 10px;
-}
-
-.select-box {
-  width: 100%;
-  min-height: 54px;
-  border: 1.5px solid rgba(15, 23, 42, 0.18);
-  background: rgba(255, 255, 255, 0.22);
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 18px 0 16px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #111827;
-}
-
-.chevron {
-  font-size: 1.5rem;
-  line-height: 1;
-  color: #475569;
-  transform: translateY(-2px);
-}
-
-.signal-panel {
-  background: rgba(255, 255, 255, 0.22);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 18px;
-  padding: 16px 20px 18px;
-  overflow: hidden;
-  position: relative;
-  min-height: 176px;
-}
-
-.panel-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #374151;
-}
-
-.signal-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #8b8bd9, #4f46e5);
-  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.8), 0 0 0 2px rgba(99,102,241,0.18);
-}
-
-.timer-badge {
-  margin-left: auto;
-  min-width: 38px;
-  height: 24px;
-  border-radius: 999px;
-  background: rgba(149, 160, 214, 0.22);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: #4f46e5;
-}
-
-.signal-core {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 16px;
-  padding: 18px 10px 8px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.08);
-  min-height: 122px;
-}
-
-.signal-number {
-  font-size: clamp(3.2rem, 9vw, 4.25rem);
-  line-height: 1;
-  font-weight: 800;
-  color: #4f46e5;
-  letter-spacing: -0.07em;
-}
-
-.signal-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  color: #1f2937;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.signal-copy strong {
-  font-size: 0.96rem;
-}
-
-.signal-copy span {
-  font-size: 0.9rem;
-  color: #475569;
-}
-
-.status-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 18px 0;
-  font-size: 0.82rem;
-  color: #475569;
-  font-weight: 600;
-}
-
-.status-icon {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #8b8bd9, #4f46e5);
-  display: block;
-}
-
-.traders-card {
-  width: 100%;
-  max-width: 700px;
-  background: #edf0f4;
-  border-radius: 28px;
-  padding: 26px 22px 14px;
-  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
-}
-
-.top-time-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 4px 8px;
-}
-
-.time {
-  font-size: clamp(3.1rem, 8vw, 4.2rem);
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -0.08em;
-  color: #141b25;
-}
-
-.lte-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.65rem;
-  color: #111827;
-  font-weight: 700;
-  letter-spacing: -0.05em;
-}
-
-.lte-bars {
-  display: inline-flex;
-  align-items: end;
-  gap: 3px;
-  transform: translateY(2px);
-}
-
-.lte-bars i {
-  display: block;
-  width: 4px;
-  border-radius: 999px;
-  background: #111827;
-}
-
-.lte-bars i:nth-child(1) { height: 10px; }
-.lte-bars i:nth-child(2) { height: 16px; }
-.lte-bars i:nth-child(3) { height: 22px; }
-
-.pct {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 24px;
-  border-radius: 999px;
-  background: #a7f3d0;
-  color: #065f46;
-  font-size: 0.88rem;
-  font-weight: 800;
-}
-
-.traders-header {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  margin-top: 8px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
-}
-
-.traders-header h2 {
-  margin: 0;
-  font-size: clamp(2.1rem, 5vw, 3rem);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-}
-
-.traders-header p {
-  margin: 4px 0 0;
-  font-size: 1.15rem;
-  color: #475569;
-  font-weight: 500;
-}
-
-.home-link {
-  font-size: 1.3rem;
-  color: #111827;
-  font-weight: 600;
-}
-
-.mini-dashboard {
-  padding-top: 20px;
-}
-
-.section-title {
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #475569;
-  margin: 0 0 12px;
-}
-
-.select-box.large {
-  min-height: 62px;
-  background: rgba(255,255,255,0.14);
-  border-color: rgba(15, 23, 42, 0.12);
-  margin-bottom: 18px;
-}
-
-.panel-header--compact {
-  margin: 8px 0 18px;
-  justify-content: flex-start;
-  font-size: 0.75rem;
-}
-
-.panel-header--compact .timer-badge {
-  margin-left: auto;
-}
-
-.timer-badge--soft {
-  background: rgba(122, 112, 220, 0.18);
-  color: #4338ca;
-}
-
-.alert-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 94px;
-  padding: 16px 18px;
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  border-radius: 18px;
-  color: #1f2937;
-  font-size: clamp(1.15rem, 2.4vw, 1.7rem);
-  line-height: 1.3;
-  text-align: center;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-}
-
-.panel-header--space {
-  margin-top: 24px;
-}
-
-.distribution-tag {
-  margin-left: auto;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #475569;
-}
-
-.distribution-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.digit-box {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  border-radius: 16px;
-  min-height: 92px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.digit-box__value {
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.08em;
-  color: #111827;
-}
-
-.digit-box__percent {
-  margin-top: 6px;
-  color: #64748b;
-  font-size: 0.88rem;
-  font-weight: 600;
-}
-
-.legend-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 0.92rem;
-  color: #475569;
-  margin-top: 18px;
-}
-
-.bottom-toolbar {
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: 40px minmax(0, 1fr) 40px;
-  align-items: center;
-  gap: 14px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 18px;
-  padding: 10px 12px;
-}
-
-.nav-arrow,
-.nav-more {
-  appearance: none;
-  border: 0;
-  background: rgba(15,23,42,0.06);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 2rem;
-  color: #111827;
-  display: grid;
-  place-items: center;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.toolbar-middle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: rgba(255,255,255,0.14);
-  border-radius: 14px;
-  min-height: 44px;
-  padding: 0 12px;
-}
-
-.toolbar-icon {
-  font-size: 1.2rem;
-  color: #111827;
-}
-
-.toolbar-title {
-  flex: 1;
-  text-align: center;
-  font-size: 1.05rem;
-  color: #111827;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.refresh {
-  font-size: 1.2rem;
-  color: #111827;
-}
-
-.split-layout {
-  width: 100%;
-  max-width: 820px;
-  display: flex;
-  gap: 14px;
-  align-items: stretch;
-}
-
-.split-card {
-  background: #edf0f4;
-  border-radius: 24px;
-  min-height: 400px;
-  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
-}
-
-.split-card--left {
-  flex: 1.35;
-  padding: 18px 14px 14px;
-}
-
-.split-card--right {
-  flex: 0.8;
-  position: relative;
-  padding: 18px 16px;
-}
-
-.upper-strip {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(90deg, #5b5fd7 0%, #4c59cb 100%);
-  color: #fff;
-  padding: 10px 12px;
-  border-radius: 18px;
-}
-
-.brand-mini {
-  width: 24px;
-  height: 24px;
-  display: grid;
-  place-items: center;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.15);
-}
-
-.domain-pill {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 0.82rem;
-  opacity: 0.95;
-}
-
-.plus-compact,
-.counter-bubble,
-.kebab {
-  flex-shrink: 0;
-}
-
-.plus-compact {
-  font-size: 1.6rem;
-  font-weight: 300;
-}
-
-.counter-bubble {
-  min-width: 22px;
-  height: 22px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  font-size: 0.72rem;
-  font-weight: 700;
-  background: rgba(255,255,255,0.18);
-}
-
-.kebab {
-  font-size: 1.4rem;
-  line-height: 1;
-}
-
-.split-body {
-  padding-top: 18px;
-}
-
-.split-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.app-mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, #d4d7e7, #bec5de);
-  display: grid;
-  place-items: center;
-  color: #4f46e5;
-  font-size: 1.2rem;
-}
-
-.split-header h3 {
-  margin: 0;
-  flex: 1;
-  font-size: clamp(2.1rem, 5vw, 3rem);
-  line-height: 1;
-  letter-spacing: -0.05em;
-  font-weight: 800;
-}
-
-.menu-button--solid {
-  background: rgba(148, 163, 184, 0.16);
-}
-
-.stack-block--tight {
-  margin-top: 18px;
-}
-
-.trade-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 64px;
-  padding: 0 14px 0 10px;
-  border-radius: 16px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: rgba(255,255,255,0.12);
-  margin-bottom: 12px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #101827;
-}
-
-.trade-row.selected {
-  background: rgba(255,255,255,0.2);
-}
-
-.trade-row .chevron {
-  margin-left: auto;
-}
-
-.trade-bullet {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-}
-
-.trade-bullet--even {
-  background: #111827;
-  box-shadow: inset 0 0 0 4px #a5b4fc;
-}
-
-.trade-bullet--match {
-  background: #f8fafc;
-  box-shadow: inset 0 0 0 3px #4f46e5, 0 0 0 2px rgba(79,70,229,0.12);
-}
-
-.trade-bullet--over {
-  position: relative;
-  background: #fff;
-  box-shadow: inset 0 0 0 2px #111827;
-}
-
-.trade-bullet--over::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 13px;
-  height: 2px;
-  background: #111827;
-  border-radius: 999px;
-  transform: translate(-50%, -50%);
-}
-
-.split-card--right {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.live-badge {
-  align-self: flex-end;
-  margin-bottom: 12px;
-  min-width: 74px;
-  height: 36px;
-  border-radius: 999px;
-  background: rgba(99, 102, 241, 0.16);
-  color: #4338ca;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.graph-box {
-  width: 100%;
-  height: 240px;
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(148,163,184,0.2));
-  border: 1px solid rgba(15,23,42,0.08);
-}
-
-@media (max-width: 900px) {
-  .split-layout {
-    flex-direction: column;
-  }
-
-  .split-card--left,
-  .split-card--right {
-    width: 100%;
-  }
-}
-
-@media (max-width: 580px) {
-  .page-shell {
-    padding: 18px 10px 30px;
-  }
-
-  .traders-card {
-    padding-inline: 14px;
-  }
-
-  .legend-row {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .toolbar-title {
-    font-size: 0.95rem;
-  }
+const distribution = Array.from({ length: 10 }, (_, index) => index);
+
+export default function HomePage() {
+  return (
+    <main className="dashboard-shell">
+      <section className="browser-demo">
+        <div className="browser-bar">
+          <div className="browser-controls">
+            <span className="browser-dot browser-dot--light" />
+            <span className="browser-dot browser-dot--mid" />
+          </div>
+          <div className="browser-track" />
+          <div className="browser-close">×</div>
+        </div>
+
+        <div className="browser-header">
+          <div className="browser-brand">
+            <span className="brand-home">⌂</span>
+            <span className="brand-url">digitpilot.site/app/</span>
+          </div>
+          <span className="browser-plus">＋</span>
+          <span className="browser-badge">17</span>
+          <span className="browser-menu">⋮</span>
+        </div>
+
+        <div className="mobile-panel">
+          <div className="mobile-header">
+            <h1>DigitPilot</h1>
+            <button className="hamburger" aria-label="Open menu">
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+
+          <div className="field-group">
+            <label>ANALYSIS MODE</label>
+            <div className="select-box">
+              <span>All Volatility Markets</span>
+              <span className="chevron">⌄</span>
+            </div>
+          </div>
+
+          <div className="field-group">
+            <label>DATA POINTS</label>
+            <div className="select-box">
+              <span>50 Ticks</span>
+              <span className="chevron">⌄</span>
+            </div>
+          </div>
+
+          <div className="signal-box">
+            <div className="signal-topline">
+              <span className="signal-mark" />
+              <span>MATCHES SIGNALS</span>
+              <span className="signal-time">11s</span>
+            </div>
+
+            <div className="signal-body">
+              <div className="signal-value">8</div>
+              <div className="signal-copy">
+                <strong>Hot Markets:</strong>
+                <span>1s Volatility 100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="device-status">
+          <span className="device-dot" />
+          Connected to Deriv API • Real-time Analysis
+        </div>
+      </section>
+
+      <section className="dashboard-card">
+        <div className="dashboard-topline">
+          <div className="time-readout">4:50</div>
+          <div className="signal-status">
+            <span className="bars">
+              <i />
+              <i />
+              <i />
+            </span>
+            LTE <span className="signal-rank">80</span>
+          </div>
+        </div>
+
+        <div className="dashboard-header">
+          <div>
+            <h2>Traders</h2>
+            <p>Powered by Brightex</p>
+          </div>
+          <span className="back-link">← Home</span>
+        </div>
+
+        <div className="markets-panel">
+          <div className="section-label">ANALYSIS MODE</div>
+          <div className="select-box large">
+            <span>All Volatility Markets</span>
+            <span className="chevron chevron--up">⌃</span>
+          </div>
+
+          <div className="section-label">DATA POINTS</div>
+          <div className="select-box large">
+            <span>50 Ticks</span>
+            <span className="chevron chevron--up">⌃</span>
+          </div>
+
+          <div className="signal-topline compact">
+            <span className="signal-mark signal-mark--purple" />
+            <span>MATCHES SIGNALS</span>
+            <span className="signal-time signal-time--purple">6s</span>
+          </div>
+
+          <div className="alert-box">
+            Could not reach the Deriv API. Check your connection and reload.
+          </div>
+
+          <div className="signal-topline compact compact--space">
+            <span className="signal-mark signal-mark--purple" />
+            <span>DIGIT DISTRIBUTION</span>
+            <span className="distribution-tag">Volatility 10</span>
+          </div>
+
+          <div className="distribution-grid">
+            {distribution.map((value) => (
+              <div className="digit-card" key={value}>
+                <span className="digit-value">{value}</span>
+                <span className="digit-percent">0%</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="legend-row">
+            <span>Green: most frequent</span>
+            <span>Red: least frequent</span>
+          </div>
+
+          <div className="toolbar-row">
+            <button className="control-btn">‹</button>
+            <div className="toolbar-middle">
+              <span className="toolbar-icon">▣</span>
+              <span className="toolbar-text">pilot-xi.vercel.app</span>
+              <span className="toolbar-refresh">↻</span>
+            </div>
+            <button className="control-btn">⋯</button>
+          </div>
+        </div>
+      </section>
+
+      <section className="split-layout">
+        <div className="split-left panel-card">
+          <div className="mini-browser">
+            <div className="mini-badge">◫</div>
+            <span className="mini-url">digitpilot.site/app/</span>
+            <span className="mini-plus">＋</span>
+            <span className="mini-counter">17</span>
+            <span className="mini-menu">⋮</span>
+          </div>
+
+          <div className="mini-head">
+            <div className="mini-icon">◫</div>
+            <h3>DigitPilot</h3>
+            <button className="hamburger hamburger--soft" aria-label="Open menu">
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+
+          <div className="field-group field-group--tight">
+            <label>TRADE TYPE</label>
+            <div className="trade-row selected">
+              <span className="trade-bullet trade-bullet--even" />
+              <span>Even/Odd</span>
+              <span className="chevron">⌄</span>
+            </div>
+
+            <div className="trade-row">
+              <span className="trade-bullet trade-bullet--match" />
+              <span>Matches</span>
+              <span className="chevron">⌄</span>
+            </div>
+
+            <div className="trade-row">
+              <span className="trade-bullet trade-bullet--over" />
+              <span>Over/Under</span>
+              <span className="chevron">⌄</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="split-right panel-card">
+          <span className="live-pill">LIVE</span>
+          <div className="graph-box" />
+        </div>
+      </section>
+    </main>
+  );
 }
